@@ -13,7 +13,5 @@ def handle_menu_input(choice):
         load_game()
     elif choice == 3:
         open_gallery()
-    elif choice == 4:
-        show_tutorial()
     elif choice == 5:
         open_settings()
