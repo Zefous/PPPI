@@ -1,17 +1,29 @@
 import json
 import os
 
-SAVE_FILE = "savegame.json"
+class SaveSystem:
+    """Класс для управления системой сохранений игры."""
 
-def save_game(data):
-    with open(SAVE_FILE, "w") as f:
-        json.dump(data, f)
-    print("Игра сохранена.")
+    SAVE_FILE = "savegame.json"
 
-def load_game():
-    if os.path.exists(SAVE_FILE):
-        with open(SAVE_FILE, "r") as f:
-            return json.load(f)
-    else:
-        print("Сохранений не найдено.")
-        return None
+    def save(self, data: dict):
+        """
+        Сохраняет данные игры в файл.
+
+        :param data: Словарь с данными состояния игры.
+        """
+        with open(self.SAVE_FILE, "w") as f:
+            json.dump(data, f)
+        print("Игра сохранена.")
+
+    def load(self) -> dict:
+        """
+        Загружает данные игры из файла.
+
+        :return: Словарь с сохранёнными данными или пустой словарь.
+        """
+        if os.path.exists(self.SAVE_FILE):
+            with open(self.SAVE_FILE, "r") as f:
+                return json.load(f)
+        print("Сохранения не найдены.")
+        return {}

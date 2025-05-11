@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>style_currency &#8212; документация PPPI_DMC 0.1</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=6625fa76" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=039e1c02" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=8e37cb66"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/translations.js?v=29b1f277"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Исходный код style_currency</h1><div class="highlight"><pre>
+<div class="viewcode-block" id="CurrencySystem"><a class="viewcode-back" href="../style_currency.html#style_currency.CurrencySystem">[документация]</a><span></span><span class="k">class</span><span class="w"> </span><span class="nc">CurrencySystem</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Класс для управления валютой: красные сферы и очки стиля.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Инициализация начальных значений валюты.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">red_orbs</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">style_points</span> <span class="o">=</span> <span class="mi">0</span>
+
+<div class="viewcode-block" id="CurrencySystem.add_orbs"><a class="viewcode-back" href="../style_currency.html#style_currency.CurrencySystem.add_orbs">[документация]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">add_orbs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Добавляет указанное количество красных сфер.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">red_orbs</span> <span class="o">+=</span> <span class="n">amount</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;+</span><span class="si">{</span><span class="n">amount</span><span class="si">}</span><span class="s2"> красных сфер&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CurrencySystem.add_style_points"><a class="viewcode-back" href="../style_currency.html#style_currency.CurrencySystem.add_style_points">[документация]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">add_style_points</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Добавляет очки стиля.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">style_points</span> <span class="o">+=</span> <span class="n">amount</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;+</span><span class="si">{</span><span class="n">amount</span><span class="si">}</span><span class="s2"> очков стиля&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CurrencySystem.spend_orbs"><a class="viewcode-back" href="../style_currency.html#style_currency.CurrencySystem.spend_orbs">[документация]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">spend_orbs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cost</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Пытается потратить красные сферы.</span>
+
+<span class="sd">        :param cost: Стоимость покупки.</span>
+<span class="sd">        :return: True, если покупка успешна.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">red_orbs</span> <span class="o">&gt;=</span> <span class="n">cost</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">red_orbs</span> <span class="o">-=</span> <span class="n">cost</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Недостаточно сфер.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span></div></div>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">PPPI_DMC</a></h1>
+
+
+
+
+
+
+
+
+<h3>Навигация</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Код модуля</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Быстрый поиск</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Искать" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2025, Kirill Medvedev.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

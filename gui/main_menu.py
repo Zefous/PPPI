@@ -1,21 +1,18 @@
-def display_main_menu():
-    print("1. Новая игра")
-    print("2. Загрузить игру")
-    print("3. Галерея")
-    print("4. Обучение")
-    print("5. Настройки")
-    print("Выберите опцию...")
+class MainMenu:
+    """Класс для отображения и управления главным меню игры."""
 
-def handle_menu_input(choice):
-    if choice == 1:
-        start_new_game()
-    elif choice == 2:
-        load_game()
-    elif choice == 3:
-        open_gallery()
-    elif choice == 4:
-        show_tutorial()
-    elif choice == 3:
-        open_gallery()
-    elif choice == 5:
-        open_settings()
+    def __init__(self):
+        """Инициализация элементов главного меню."""
+        self.options = [
+            "Новая игра",
+            "Загрузить сохранение",
+            "Галерея",
+            "Обучение",
+            "Настройки"
+        ]
+
+    def display(self):
+        """Отображает главное меню с доступными опциями."""
+        print("Главное меню:")
+        for option in self.options:
+            print(f"- {option}")

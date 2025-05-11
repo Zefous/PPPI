@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mission_rating &#8212; документация PPPI_DMC 0.1</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=6625fa76" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=039e1c02" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=8e37cb66"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/translations.js?v=29b1f277"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Исходный код mission_rating</h1><div class="highlight"><pre>
+<div class="viewcode-block" id="MissionRating"><a class="viewcode-back" href="../mission_rating.html#mission_rating.MissionRating">[документация]</a><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MissionRating</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Класс для расчёта и отображения рейтинга игрока за миссию.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="MissionRating.calculate"><a class="viewcode-back" href="../mission_rating.html#mission_rating.MissionRating.calculate">[документация]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">calculate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time_taken</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">damage_taken</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">style_points</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Вычисляет ранг игрока.</span>
+
+<span class="sd">        :param time_taken: Время прохождения.</span>
+<span class="sd">        :param damage_taken: Полученный урон.</span>
+<span class="sd">        :param style_points: Очки стиля.</span>
+<span class="sd">        :return: Строка с рангом (D, S, SS, SSS).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">style_points</span> <span class="o">&gt;</span> <span class="mi">5000</span> <span class="ow">and</span> <span class="n">damage_taken</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">time_taken</span> <span class="o">&lt;</span> <span class="mi">200</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;SSS&quot;</span>
+        <span class="k">elif</span> <span class="n">style_points</span> <span class="o">&gt;</span> <span class="mi">4000</span> <span class="ow">and</span> <span class="n">time_taken</span> <span class="o">&lt;</span> <span class="mi">300</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;SS&quot;</span>
+        <span class="k">elif</span> <span class="n">style_points</span> <span class="o">&gt;</span> <span class="mi">3000</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;S&quot;</span>
+        <span class="k">return</span> <span class="s2">&quot;D&quot;</span></div>
+
+<div class="viewcode-block" id="MissionRating.display_summary"><a class="viewcode-back" href="../mission_rating.html#mission_rating.MissionRating.display_summary">[документация]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">display_summary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stats</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Отображает результаты миссии.</span>
+
+<span class="sd">        :param stats: Словарь с параметрами миссии.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">rank</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calculate</span><span class="p">(</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">],</span> <span class="n">stats</span><span class="p">[</span><span class="s1">&#39;damage&#39;</span><span class="p">],</span> <span class="n">stats</span><span class="p">[</span><span class="s1">&#39;style_points&#39;</span><span class="p">])</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Завершение миссии:&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Время: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> сек.&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Урон: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;damage&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Стиль: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;style_points&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> очков&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Ранг: </span><span class="si">{</span><span class="n">rank</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div></div>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">PPPI_DMC</a></h1>
+
+
+
+
+
+
+
+
+<h3>Навигация</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Код модуля</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Быстрый поиск</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Искать" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2025, Kirill Medvedev.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

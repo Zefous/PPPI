@@ -1,13 +1,24 @@
 class UpgradeTree:
+    """Класс для управления древом улучшений способностей."""
+
     def __init__(self):
+        """Инициализация пустого списка умений."""
         self.unlocked = []
 
-    def unlock_ability(self, ability, cost, currency_system):
-        if currency_system.spend_orbs(cost):
-            self.unlocked.append(ability)
-            print(f"Способность '{ability}' разблокирована.")
-        else:
-            print(f"Не удалось разблокировать '{ability}'.")
+    def unlock(self, ability: str, cost: int, currency: CurrencySystem):
+        """
+        Разблокирует новое умение.
 
-    def show_upgrades(self):
-        print("Разблокированные умения:", self.unlocked)
+        :param ability: Название умения.
+        :param cost: Стоимость в красных сферах.
+        :param currency: Экземпляр валютной системы.
+        """
+        if currency.spend_orbs(cost):
+            self.unlocked.append(ability)
+            print(f"Разблокировано: {ability}")
+
+    def show(self):
+        """Показывает список разблокированных умений."""
+        print("Умения:")
+        for ability in self.unlocked:
+            print(f"- {ability}")

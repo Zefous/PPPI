@@ -1,18 +1,33 @@
 import time
 
-mission_data = {
-    "goal": "Победить босса",
-    "time_limit": 600,  # секунд
-}
+class MissionProgress:
+    """Класс для отслеживания прогресса выполнения миссии."""
 
-def start_mission_timer():
-    start_time = time.time()
-    print("Миссия началась.")
-    return start_time
+    def __init__(self, goal: str, time_limit: int):
+        """
+        Инициализация миссии.
 
-def check_goal_completion(state):
-    if state.get("boss_defeated"):
-        print("Цель выполнена!")
-        return True
-    print("Цель ещё не выполнена.")
-    return False
+        :param goal: Цель миссии.
+        :param time_limit: Ограничение по времени в секундах.
+        """
+        self.goal = goal
+        self.time_limit = time_limit
+        self.start_time = None
+
+    def start(self):
+        """Запускает таймер миссии."""
+        self.start_time = time.time()
+        print("Миссия началась.")
+
+    def check_goal(self, state: dict) -> bool:
+        """
+        Проверяет, достигнута ли цель миссии.
+
+        :param state: Текущее состояние миссии.
+        :return: True, если цель выполнена, иначе False.
+        """
+        if state.get("boss_defeated"):
+            print("Цель выполнена!")
+            return True
+        print("Цель ещё не выполнена.")
+        return False
