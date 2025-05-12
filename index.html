@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devil May Cry</title>
+    <style>/* Общие стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: hsl(0, 0%, 34%);
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Заголовок */
+header {
+    background: hwb(0 0% 100%);
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+header nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Секции */
+.section {
+    padding: 40px 0;
+    background: hwb(0 81% 19%);
+    margin-bottom: 20px;
+}
+
+.section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.section p {
+    font-size: 1.1em;
+    text-align: justify;
+}
+
+.section ul {
+    list-style: disc;
+    padding-left: 20px;
+}
+
+/* Галерея скриншотов */
+.gallery {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.gallery img {
+    width: 30%;
+    height: auto;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+.gallery img:hover {
+    transform: scale(1.1);
+}
+
+/* Форма контактов */
+
+#text_contact {
+    text-align: center;
+}
+
+form input,
+form textarea,
+form button {
+    display: block;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 1em;
+}
+
+form button {
+    background: hsl(0, 0%, 34%);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+form button:hover {
+    background: #0056b3;
+}
+
+/* Подвал */
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+}</style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Devil May Cry - PPPI</h1>
+            <nav>
+                <ul>
+                    <li><a href="#about">Об игре</a></li>
+                    <li><a href="#features">Возможности</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2>Об игре</h2>
+            <p>
+                «Devil May Cry» — это проект, разрабатываемый в рамках курса по программированию и игровому дизайну, вдохновлённый легендарной серией слэшеров. Игра совмещает в себе высокоскоростной боевой экшен, готическую атмосферу и глубокую систему прокачки, предлагая игроку яркий и стильный опыт в роли охотника на демонов. Сюжет разворачивается в мрачном мегаполисе, раздираемом разломами между мирами, где герою предстоит сразиться с легионами адских существ и остановить надвигающийся апокалипсис.
+            </p>
+        </div>
+    </section>
+
+    <section id="features" class="section">
+        <div class="container">
+            <h2>Возможности</h2>
+            <ul>
+                <li>Зрелищные и быстрые бои с комбо-атаками.</li>
+                <li>Уникальные оружия ближнего и дальнего боя.</li>
+                <li>Разнообразные демоны и боссы.</li>
+                <li>Прокачка способностей и стиля боя.</li>
+                <li>Готическая атмосфера и кинематографичная подача.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <h2>Контакты</h2>
+            <p id="text_contact">Поделитесь с нами своими предложениями:</p>
+            <form>
+                <input type="text" placeholder="Ваше имя" required>
+                <input type="email" placeholder="Ваш email" required>
+                <textarea placeholder="Сообщение"></textarea>
+                <button type="submit">Отправить</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>©2025, Medvedev Kirill. Все права защищены.</p>
+        </div>
+    </footer>
+</body>
+</html>
